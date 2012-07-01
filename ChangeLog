@@ -1,0 +1,8 @@
+2012-07-01  Oliver Hader  <oliver.hader@typo3.org>
+
+	* [FEATURE] Add basic rendering
+	* [TASK] Add basic documentation (see README.txt)
+
+2012-06-30  Oliver Hader  <oliver.hader@typo3.org>
+
+	* [TASK] Initial version of this extension

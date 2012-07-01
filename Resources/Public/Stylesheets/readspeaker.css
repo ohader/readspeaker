@@ -1,0 +1,16 @@
+.tx-readspeaker-widget {
+	margin-bottom: 1em;
+}
+
+.tx-readspeaker-link-label {
+	margin-left: 1em;
+}
+
+.tx-readspeaker-link-wrap {
+
+}
+
+.tx-readspeaker-reader-wrap a {
+	margin: 0 !important;
+	padding: 2px !important;
+}

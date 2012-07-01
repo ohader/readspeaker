@@ -1,0 +1,20 @@
+plugin.tx_readspeaker {
+	settings {
+		# cat=ReadSpeaker; type=file; label=CSS Stylesheet
+		stylesheet = EXT:readspeaker/Resources/Public/Stylesheets/readspeaker.css
+		# cat=ReadSpeaker; type=int+; label=ReadSpeaker Customer Id
+		customerId =
+		# cat=ReadSpeaker; type=string; label=ReadSpeaker BaseUrl (optinal if current baseUrl differs from that)
+		baseUrl =
+		# cat=ReadSpeaker; type=options[en_en,de_de]; label=Language
+		language = en_en
+		# cat=ReadSpeaker; type=string; label=CSS Id of block to be read (optional, but recommeded)
+		readId =
+		# cat=ReadSpeaker; type=string; label=CSS Id of block to be used to render widget (optional)
+		renderTo =
+		# cat=ReadSpeaker; type=string; label=Script URL (%customerId% will be replaced)
+		scriptUrl = http://f1.eu.readspeaker.com/script/%customerId%/rs_embhl_v2_de_de.js
+		# cat=ReadSpeaker; type=string; label=Application URL
+		applicationUrl = http://app.eu.readspeaker.com/cgi-bin/rsent
+	}
+}

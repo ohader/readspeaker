@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'readspeaker'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="label.readContent">Read content</label>
+			<label index="description.readContent">Click here to have the website content read</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="label.readContent">Inhalt vorlesen</label>
+			<label index="description.readContent">Klicken Sie hier um den Seiteninhalt vorgelesen zu bekommen</label>
+		</languageKey>
+	</data>
+</T3locallang>

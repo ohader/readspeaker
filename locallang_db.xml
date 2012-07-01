@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'readspeaker'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pages.tx_readspeaker_disable.label">ReadSpeaker</label>
+			<label index="pages.tx_readspeaker_disable.checkbox">Disable</label>
+			<label index="tt_content.tx_readspeaker_disable.label">ReadSpeaker</label>
+			<label index="tt_content.tx_readspeaker_disable.checkbox">Disable</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="pages.tx_readspeaker_disable.label">ReadSpeaker</label>
+			<label index="pages.tx_readspeaker_disable.checkbox">deaktivieren</label>
+			<label index="tt_content.tx_readspeaker_disable.label">ReadSpeaker</label>
+			<label index="tt_content.tx_readspeaker_disable.checkbox">deaktivieren</label>
+		</languageKey>
+	</data>
+</T3locallang>
