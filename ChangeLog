@@ -3,6 +3,7 @@
 	* [BUGFIX] ReadSpeaker application URL gets encoded twice
 	* [FEATURE] Add baseUrl as replacement for URL host prefix to be read
 	* [FEATURE] Add support for alternative voice used to read text
+	* [TASK] Update documentation
 
 2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
 
