@@ -11,6 +11,7 @@ plugin.tx_readspeaker {
 		customerId = {$plugin.tx_readspeaker.settings.customerId}
 		baseUrl = {$plugin.tx_readspeaker.settings.baseUrl}
 		language = {$plugin.tx_readspeaker.settings.language}
+		voice = {$plugin.tx_readspeaker.settings.voice}
 		readId = {$plugin.tx_readspeaker.settings.readId}
 		renderTo = {$plugin.tx_readspeaker.settings.renderTo}
 		scriptUrl = {$plugin.tx_readspeaker.settings.scriptUrl}
@@ -57,12 +58,18 @@ plugin.tx_readspeaker {
 						}
 						30 = TEXT
 						30 {
+							value < plugin.tx_readspeaker.settings.voice
+							required = 1
+							wrap = &voice=|
+						}
+						40 = TEXT
+						40 {
 							value < plugin.tx_readspeaker.settings.readId
 							rawUrlEncode = 1
 							wrap = &readid=|
 						}
-						40 = TEXT
-						40 {
+						50 = TEXT
+						50 {
 							data = getindpenv:TYPO3_REQUEST_URL
 							override < plugin.tx_readspeaker.settings.baseUrl
 							override {

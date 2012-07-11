@@ -8,6 +8,8 @@ plugin.tx_readspeaker {
 		baseUrl =
 		# cat=ReadSpeaker; type=options[en_en,de_de]; label=Language
 		language = en_en
+		# cat=ReadSpeaker; type=string; label=Voice to be used for reading (optional)
+		voice =
 		# cat=ReadSpeaker; type=string; label=CSS Id of block to be read (optional, but recommeded)
 		readId =
 		# cat=ReadSpeaker; type=string; label=CSS Id of block to be used to render widget (optional)
