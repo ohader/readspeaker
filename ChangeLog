@@ -1,6 +1,7 @@
 2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
 
 	* [BUGFIX] ReadSpeaker application URL gets encoded twice
+	* [FEATURE] Add baseUrl as replacement for URL host prefix to be read
 
 2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
 

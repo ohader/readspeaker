@@ -64,6 +64,16 @@ plugin.tx_readspeaker {
 						40 = TEXT
 						40 {
 							data = getindpenv:TYPO3_REQUEST_URL
+							override < plugin.tx_readspeaker.settings.baseUrl
+							override {
+								required = 1
+								replacement.10 {
+									search = /\/$/
+									replace =
+									useRegExp = 1
+								}
+								dataWrap = |{getindpenv:REQUEST_URI}
+							}
 							rawUrlEncode = 1
 							wrap = &url=|
 						}
