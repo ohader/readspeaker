@@ -1,14 +1,14 @@
 <?php
 
-########################################################################
-# Extension Manager/Repository config file for ext "readspeaker".
-#
-# Auto generated 30-06-2012 16:52
-#
-# Manual updates:
-# Only the data in the array - everything else is removed by next
-# writing. "version" and "dependencies" must not be touched!
-########################################################################
+/***************************************************************
+* Extension Manager/Repository config file for ext "readspeaker".
+*
+* Auto generated 11-07-2012 21:32
+*
+* Manual updates:
+* Only the data in the array - everything else is removed by next
+* writing. "version" and "dependencies" must not be touched!
+***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'ReadSpeaker - Online Text to Speech',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.0.1',
+	'version' => '0.1.0',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.5.0-0.0.0',
@@ -39,7 +39,9 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:5:{s:9:"ChangeLog";s:4:"df3f";s:10:"README.txt";s:4:"ee2d";s:12:"ext_icon.gif";s:4:"1bdc";s:19:"doc/wizard_form.dat";s:4:"e7ad";s:20:"doc/wizard_form.html";s:4:"b448";}',
+	'_md5_values_when_last_written' => 'a:25:{s:9:"ChangeLog";s:4:"9616";s:16:"ext_autoload.php";s:4:"f976";s:12:"ext_icon.gif";s:4:"6049";s:17:"ext_localconf.php";s:4:"8a32";s:14:"ext_tables.php";s:4:"2b25";s:14:"ext_tables.sql";s:4:"bb6c";s:13:"locallang.xml";s:4:"61f7";s:16:"locallang_db.xml";s:4:"1439";s:10:"README.txt";s:4:"b981";s:18:"Classes/Common.php";s:4:"f049";s:30:"Classes/Constants/Renderer.php";s:4:"5b53";s:34:"Classes/Hooks/PageRendererHook.php";s:4:"826b";s:36:"Classes/Services/AbstractService.php";s:4:"0eed";s:32:"Classes/Services/PageService.php";s:4:"f670";s:34:"Classes/Services/RenderService.php";s:4:"099f";s:38:"Classes/Services/TypoScriptService.php";s:4:"981a";s:38:"Configuration/TypoScript/constants.txt";s:4:"ef49";s:34:"Configuration/TypoScript/setup.txt";s:4:"454f";s:24:"Documentation/manual.pdf";s:4:"a860";s:24:"Documentation/manual.sxw";s:4:"c1f0";s:38:"Resources/Public/Images/basic1-117.png";s:4:"8bea";s:43:"Resources/Public/Images/icon_12px_black.gif";s:4:"5d6b";s:43:"Resources/Public/Images/icon_16px_black.gif";s:4:"6049";s:43:"Resources/Public/Images/sound_high_icon.png";s:4:"3582";s:44:"Resources/Public/Stylesheets/readspeaker.css";s:4:"2e81";}',
+	'suggests' => array(
+	),
 );
 
 ?>

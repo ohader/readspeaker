@@ -1,5 +1,9 @@
 2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
 
+	* [RELEASE] Version 0.1.0
+
+2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
+
 	* [TASK] Add speak:none CSS-Aural definition
 	* [TASK] Add button style configuration to constant editor
 	* [TASK] Add basic documentation
