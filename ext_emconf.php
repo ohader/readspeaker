@@ -3,7 +3,7 @@
 /***************************************************************
 * Extension Manager/Repository config file for ext "readspeaker".
 *
-* Auto generated 11-07-2012 21:32
+* Auto generated 11-07-2012 23:14
 *
 * Manual updates:
 * Only the data in the array - everything else is removed by next
@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.1.0',
+	'version' => '0.2.0',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.5.0-0.0.0',
@@ -39,7 +39,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:25:{s:9:"ChangeLog";s:4:"9616";s:16:"ext_autoload.php";s:4:"f976";s:12:"ext_icon.gif";s:4:"6049";s:17:"ext_localconf.php";s:4:"8a32";s:14:"ext_tables.php";s:4:"2b25";s:14:"ext_tables.sql";s:4:"bb6c";s:13:"locallang.xml";s:4:"61f7";s:16:"locallang_db.xml";s:4:"1439";s:10:"README.txt";s:4:"b981";s:18:"Classes/Common.php";s:4:"f049";s:30:"Classes/Constants/Renderer.php";s:4:"5b53";s:34:"Classes/Hooks/PageRendererHook.php";s:4:"826b";s:36:"Classes/Services/AbstractService.php";s:4:"0eed";s:32:"Classes/Services/PageService.php";s:4:"f670";s:34:"Classes/Services/RenderService.php";s:4:"099f";s:38:"Classes/Services/TypoScriptService.php";s:4:"981a";s:38:"Configuration/TypoScript/constants.txt";s:4:"ef49";s:34:"Configuration/TypoScript/setup.txt";s:4:"454f";s:24:"Documentation/manual.pdf";s:4:"a860";s:24:"Documentation/manual.sxw";s:4:"c1f0";s:38:"Resources/Public/Images/basic1-117.png";s:4:"8bea";s:43:"Resources/Public/Images/icon_12px_black.gif";s:4:"5d6b";s:43:"Resources/Public/Images/icon_16px_black.gif";s:4:"6049";s:43:"Resources/Public/Images/sound_high_icon.png";s:4:"3582";s:44:"Resources/Public/Stylesheets/readspeaker.css";s:4:"2e81";}',
+	'_md5_values_when_last_written' => 'a:25:{s:9:"ChangeLog";s:4:"6dbb";s:16:"ext_autoload.php";s:4:"f976";s:12:"ext_icon.gif";s:4:"6049";s:17:"ext_localconf.php";s:4:"8a32";s:14:"ext_tables.php";s:4:"2b25";s:14:"ext_tables.sql";s:4:"bb6c";s:13:"locallang.xml";s:4:"61f7";s:16:"locallang_db.xml";s:4:"1439";s:10:"README.txt";s:4:"b981";s:18:"Classes/Common.php";s:4:"f049";s:30:"Classes/Constants/Renderer.php";s:4:"5b53";s:34:"Classes/Hooks/PageRendererHook.php";s:4:"826b";s:36:"Classes/Services/AbstractService.php";s:4:"0eed";s:32:"Classes/Services/PageService.php";s:4:"f670";s:34:"Classes/Services/RenderService.php";s:4:"099f";s:38:"Classes/Services/TypoScriptService.php";s:4:"981a";s:38:"Configuration/TypoScript/constants.txt";s:4:"c8b3";s:34:"Configuration/TypoScript/setup.txt";s:4:"20a8";s:24:"Documentation/manual.pdf";s:4:"83e4";s:24:"Documentation/manual.sxw";s:4:"e40b";s:38:"Resources/Public/Images/basic1-117.png";s:4:"8bea";s:43:"Resources/Public/Images/icon_12px_black.gif";s:4:"5d6b";s:43:"Resources/Public/Images/icon_16px_black.gif";s:4:"6049";s:43:"Resources/Public/Images/sound_high_icon.png";s:4:"3582";s:44:"Resources/Public/Stylesheets/readspeaker.css";s:4:"2e81";}',
 	'suggests' => array(
 	),
 );
