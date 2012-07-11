@@ -7,8 +7,27 @@
 	margin-left: 1em;
 }
 
-.tx-readspeaker-link-wrap {
+.tx-readspeaker-link-wrap a {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 24px;
+}
 
+.tx-readspeaker-link-wrap a.tx-readspeaker-icon-default-12 {
+	padding-left: 20px;
+	background-image: url('../Images/icon_12px_black.gif');
+}
+
+.tx-readspeaker-link-wrap a.tx-readspeaker-icon-default-16 {
+	background-image: url('../Images/icon_16px_black.gif');
+}
+
+.tx-readspeaker-link-wrap a.tx-readspeaker-icon-basic {
+	background-image: url('../Images/basic1-117.png');
+}
+
+.tx-readspeaker-link-wrap a.tx-readspeaker-icon-sound {
+	background-image: url('../Images/sound_high_icon.png');
 }
 
 .tx-readspeaker-reader-wrap {

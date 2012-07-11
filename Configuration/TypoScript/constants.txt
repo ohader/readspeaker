@@ -16,5 +16,7 @@ plugin.tx_readspeaker {
 		scriptUrl = http://f1.eu.readspeaker.com/script/%customerId%/rs_embhl_v2_de_de.js
 		# cat=ReadSpeaker; type=string; label=Application URL
 		applicationUrl = http://app.eu.readspeaker.com/cgi-bin/rsent
+		# cat=ReadSpeaker; type=user[EXT:readspeaker/Classes/Constants/Renderer.php:Tx_Readspeaker_Constants_Renderer->renderButtonClassSelector]; label=Style of the ReadSpeaker button
+		buttonStyle = tx-readspeaker-icon-basic
 	}
 }

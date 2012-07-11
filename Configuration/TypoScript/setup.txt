@@ -15,6 +15,7 @@ plugin.tx_readspeaker {
 		renderTo = {$plugin.tx_readspeaker.settings.renderTo}
 		scriptUrl = {$plugin.tx_readspeaker.settings.scriptUrl}
 		applicationUrl = {$plugin.tx_readspeaker.settings.applicationUrl}
+		buttonStyle = {$plugin.tx_readspeaker.settings.buttonStyle}
 	}
 
 	renderObject = COA
@@ -29,18 +30,9 @@ plugin.tx_readspeaker {
 
 		20 = COA
 		20 {
-			10 = IMAGE
-			10 {
-				file = EXT:readspeaker/Resources/Public/Images/icon_12px_black.gif
-				altText {
-					data = LLL:EXT:readspeaker/locallang.xml:label.readContent
-					htmlSpecialChars = 1
-				}
-			}
-			20 = TEXT
-			20 {
+			50 = TEXT
+			50 {
 				data = LLL:EXT:readspeaker/locallang.xml:label.readContent
-				wrap = <span class="tx-readspeaker-link-label">|</span>
 			}
 
 			stdWrap {
@@ -82,17 +74,23 @@ plugin.tx_readspeaker {
 					ATagParams.cObject {
 						10 = TEXT
 						10 {
-							value = accesskey="L"
-							noTrimWrap = | ||
+							value < plugin.tx_readspeaker.settings.buttonStyle
+							htmlSpecialChars = 1
+							wrap = class="|"
 						}
 						20 = TEXT
 						20 {
-							data = register:readerElementId
-							wrap = onclick="readpage(this.href, '|'); return false;"
+							value = accesskey="L"
 							noTrimWrap = | ||
 						}
 						30 = TEXT
 						30 {
+							data = register:readerElementId
+							wrap = onclick="readpage(this.href, '|'); return false;"
+							noTrimWrap = | ||
+						}
+						40 = TEXT
+						40 {
 							data = LLL:EXT:readspeaker/locallang.xml:description.readContent
 							htmlSpecialChars = 1
 							wrap = title="|"
