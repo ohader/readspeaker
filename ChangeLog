@@ -1,5 +1,9 @@
 2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
 
+	* [BUGFIX] ReadSpeaker application URL gets encoded twice
+
+2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
+
 	* [RELEASE] Version 0.1.0
 
 2012-07-11  Oliver Hader  <oliver.hader@typo3.org>

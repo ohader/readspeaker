@@ -42,7 +42,6 @@ plugin.tx_readspeaker {
 					parameter.postCObject = COA
 					parameter.postCObject {
 						stdWrap {
-							htmlSpecialChars = 1
 							wrap = ?|
 						}
 
