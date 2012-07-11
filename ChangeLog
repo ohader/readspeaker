@@ -1,3 +1,7 @@
+2012-07-11  Oliver Hader  <oliver.hader@typo3.org>
+
+	* [TASK] Add speak:none CSS-Aural definition
+
 2012-07-01  Oliver Hader  <oliver.hader@typo3.org>
 
 	* [FEATURE] Add basic rendering
