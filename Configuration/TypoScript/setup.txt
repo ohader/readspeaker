@@ -1,6 +1,6 @@
 tt_content {
-	stdWrap.outerWrap.outerWrap = <div class="rs_skip">|</div>
-	stdWrap.outerWrap.outerWrap.if {
+	stdWrap.outerWrap = <div class="rs_skip">|</div>
+	stdWrap.outerWrap.if {
 		isTrue.field = tx_readspeaker_disable
 	}
 }
