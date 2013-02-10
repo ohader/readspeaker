@@ -1,5 +1,7 @@
 plugin.tx_readspeaker {
 	settings {
+		# cat=ReadSpeaker; type=boolean; label=Enable ReadSpeaker
+		enable = 1
 		# cat=ReadSpeaker; type=file; label=CSS Stylesheet
 		stylesheet = EXT:readspeaker/Resources/Public/Stylesheets/readspeaker.css
 		# cat=ReadSpeaker; type=int+; label=ReadSpeaker Customer Id

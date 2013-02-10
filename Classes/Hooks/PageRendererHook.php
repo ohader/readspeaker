@@ -36,12 +36,24 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 	 * @param t3lib_PageRenderer $renderer
 	 */
 	public function preProcess(array $parameters, t3lib_PageRenderer $renderer) {
-		if (TYPO3_MODE !== 'FE' || !$this->getPageService()->isEnabled()) {
+		if (TYPO3_MODE !== 'FE' || !$this->isEnabled()) {
 			return;
 		}
 
 		$this->addWidget($renderer);
 		$this->addResources($renderer);
+	}
+
+	/**
+	 * Determines whether ReadSpeaker is enabled.
+	 *
+	 * @return boolean
+	 */
+	protected function isEnabled() {
+		return (
+			$this->getPageService()->isEnabled() &&
+			(bool) $this->getTypoScriptService()->resolve('settings.enable')
+		);
 	}
 
 	protected function addWidget(t3lib_PageRenderer $renderer) {
