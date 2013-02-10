@@ -1,6 +1,7 @@
 2013-02-10  Oliver Hader  <oliver.hader@typo3.org>
 
 	* [FEATURE] Add possibility to enable/disable ReadSpeaker via TypoScript
+	* [TASK] Fix typing error in README.txt file
 
 2012-07-12  Oliver Hader  <oliver.hader@typo3.org>
 
