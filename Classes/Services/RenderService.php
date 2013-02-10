@@ -46,23 +46,31 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 
 	/**
 	 * @param string $content
-	 * @param array|null $configuration
+	 * @param NULL|array $configuration
 	 * @return string
 	 */
 	public function renderFunction($content, array $configuration = NULL) {
 		$this->renderCount++;
+
+		if (empty($configuration)) {
+			$configuration = $this->getTypoScriptService()->getRenderObjectConfiguration();
+		}
 
 		$content = $this->render($configuration);
 		return $content;
 	}
 
 	/**
-	 * @param array $configuration
+	 * @param NULL|array $configuration
 	 * @return string
 	 */
-	public function renderWidget(array $configuration) {
+	public function renderWidget(array $configuration = NULL) {
 		$this->cObj = $this->getFrontend()->cObj;
 		$this->renderCount++;
+
+		if (empty($configuration)) {
+			$configuration = $this->getTypoScriptService()->getRenderObjectConfiguration();
+		}
 
 		$content = $this->render($configuration);
 		return $content;

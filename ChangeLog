@@ -2,6 +2,7 @@
 
 	* [FEATURE] Add possibility to enable/disable ReadSpeaker via TypoScript
 	* [TASK] Fix typing error in README.txt file
+	* [FEATURE] Add possibility to render widget to pre-defined ###READSPEAKER_WIDGET### marker
 
 2012-07-12  Oliver Hader  <oliver.hader@typo3.org>
 

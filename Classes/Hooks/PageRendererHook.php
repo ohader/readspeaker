@@ -56,6 +56,13 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 		);
 	}
 
+	/**
+	 * Adds the ReadSpeaker widget, either to a defined CSS Id or
+	 * by substituting the pre-defined marker ###READSPEAKER_WIDGET###
+	 * in the markup template.
+	 *
+	 * @param t3lib_PageRenderer $renderer
+	 */
 	protected function addWidget(t3lib_PageRenderer $renderer) {
 		if ($this->getRenderService()->isRendered()) {
 			return;
@@ -80,29 +87,32 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 			}
 
 		} elseif (strpos($renderer->getBodyContent(), self::MARKER_ReadSpeaker) !== FALSE) {
+			$content = str_replace(
+				self::MARKER_ReadSpeaker,
+				$this->getReadSpeakerWidget(),
+				$renderer->getBodyContent()
+			);
 
+			$renderer->setBodyContent($content);
 		}
 	}
 
+	/**
+	 * Gets the ReadSpeaker widget.
+	 *
+	 * @return string
+	 */
 	protected function getReadSpeakerWidget() {
 		$readSpeakerWidget = $this->getRenderService()->renderWidget(
-			$this->getRenderObjectConfiguration()
+			$this->getTypoScriptService()->getRenderObjectConfiguration()
 		);
 
 		return $readSpeakerWidget;
 	}
 
 	/**
-	 * @return array
-	 */
-	protected function getRenderObjectConfiguration() {
-		return array(
-			'renderObject' => $this->getTypoScriptService()->resolve('renderObject'),
-			'renderObject.' => $this->getTypoScriptService()->resolve('renderObject.'),
-		);
-	}
-
-	/**
+	 * Adds required resources like JavaScript and stylesheet.
+	 *
 	 * @param t3lib_PageRenderer $renderer
 	 */
 	protected function addResources(t3lib_PageRenderer $renderer) {

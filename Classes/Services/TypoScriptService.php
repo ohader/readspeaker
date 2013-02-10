@@ -110,5 +110,15 @@ class Tx_Readspeaker_Services_TypoScriptService extends Tx_Readspeaker_Services_
 
 		return $file;
 	}
+
+	/**
+	 * @return array
+	 */
+	public function getRenderObjectConfiguration() {
+		return array(
+			'renderObject' => $this->getTypoScriptService()->resolve('renderObject'),
+			'renderObject.' => $this->getTypoScriptService()->resolve('renderObject.'),
+		);
+	}
 }
 ?>

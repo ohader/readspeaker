@@ -33,5 +33,26 @@ abstract class Tx_Readspeaker_Services_AbstractService {
 	protected function getFrontend() {
 		return $GLOBALS['TSFE'];
 	}
+
+	/**
+	 * @return Tx_Readspeaker_Services_PageService
+	 */
+	protected function getPageService() {
+		return Tx_Readspeaker_Services_PageService::getInstance();
+	}
+
+	/**
+	 * @return Tx_Readspeaker_Services_RenderService
+	 */
+	protected function getRenderService() {
+		return Tx_Readspeaker_Services_RenderService::getInstance();
+	}
+
+	/**
+	 * @return Tx_Readspeaker_Services_TypoScriptService
+	 */
+	protected function getTypoScriptService() {
+		return Tx_Readspeaker_Services_TypoScriptService::getInstance();
+	}
 }
 ?>
