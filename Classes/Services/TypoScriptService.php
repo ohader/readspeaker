@@ -121,9 +121,18 @@ class Tx_Readspeaker_Services_TypoScriptService extends Tx_Readspeaker_Services_
 
 	/**
 	 * @return array
+	 * @deprecated Use getObjectConfiguration() instead
 	 */
 	public function getRenderObjectConfiguration() {
+		return $this->getObjectConfiguration();
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getObjectConfiguration() {
 		return array(
+			'settings.' => $this->getTypoScriptService()->resolve('settings.'),
 			'renderObject' => $this->getTypoScriptService()->resolve('renderObject'),
 			'renderObject.' => $this->getTypoScriptService()->resolve('renderObject.'),
 		);

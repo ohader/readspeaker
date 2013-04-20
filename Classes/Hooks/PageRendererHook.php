@@ -104,7 +104,7 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 	 */
 	protected function getReadSpeakerWidget() {
 		$readSpeakerWidget = $this->getRenderService()->renderWidget(
-			$this->getTypoScriptService()->getRenderObjectConfiguration()
+			$this->getTypoScriptService()->getObjectConfiguration()
 		);
 
 		return $readSpeakerWidget;

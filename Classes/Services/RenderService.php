@@ -27,6 +27,7 @@
  * @package readspeaker
  */
 class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_AbstractService implements t3lib_Singleton {
+
 	/**
 	 * @var integer
 	 */
@@ -53,7 +54,7 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 		$this->renderCount++;
 
 		if (empty($configuration)) {
-			$configuration = $this->getTypoScriptService()->getRenderObjectConfiguration();
+			$configuration = $this->getTypoScriptService()->getObjectConfiguration();
 		}
 
 		$content = $this->render($configuration);
@@ -69,7 +70,7 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 		$this->renderCount++;
 
 		if (empty($configuration)) {
-			$configuration = $this->getTypoScriptService()->getRenderObjectConfiguration();
+			$configuration = $this->getTypoScriptService()->getObjectConfiguration();
 		}
 
 		$content = $this->render($configuration);
@@ -106,5 +107,6 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 	public function isRendered() {
 		return ($this->renderCount > 0);
 	}
+
 }
 ?>
