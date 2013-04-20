@@ -67,14 +67,22 @@ class Tx_Readspeaker_Services_TypoScriptService extends Tx_Readspeaker_Services_
 	/**
 	 * @param string $path
 	 * @param boolean $global
-	 * @return array|string|NULL
+	 * @return NULL|string|array
 	 */
 	public function resolve($path, $global = FALSE) {
 		if ($global === FALSE) {
 			$path = self::PREFIX_Plugin . $path;
 		}
 
-		$configuration = $this->configuration;
+		return $this->walk($path, $this->configuration);
+	}
+
+	/**
+	 * @param string $path
+	 * @param array $configuration
+	 * @return NULL|string|array
+	 */
+	public function walk($path, array $configuration = NULL) {
 		$parts = t3lib_div::trimExplode('.', $path, TRUE);
 
 		if (substr($path, -1) === '.') {
