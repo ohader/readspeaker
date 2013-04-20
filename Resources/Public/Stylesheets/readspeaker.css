@@ -38,3 +38,16 @@
 	margin: 0 !important;
 	padding: 2px !important;
 }
+
+a.tx-readspeaker-docreader {
+	background-repeat: no-repeat;
+	background-position: left center;
+
+	padding-left: 20px;
+	background-image: url('../Images/icon_12px_black.gif');
+	display: inline !important;
+}
+
+a.tx-readspeaker-docreader + a {
+	display: inline-block !important;
+}

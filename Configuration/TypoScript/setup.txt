@@ -8,6 +8,9 @@ tt_content {
 plugin.tx_readspeaker {
 	settings {
 		enable = {$plugin.tx_readspeaker.settings.enable}
+		enableDocReader = {$plugin.tx_readspeaker.settings.enableDocReader}
+		docReaderFileExtensions = {$plugin.tx_readspeaker.settings.docReaderFileExtensions}
+
 		stylesheet = {$plugin.tx_readspeaker.settings.stylesheet}
 		customerId = {$plugin.tx_readspeaker.settings.customerId}
 		baseUrl = {$plugin.tx_readspeaker.settings.baseUrl}
@@ -17,11 +20,14 @@ plugin.tx_readspeaker {
 		renderTo = {$plugin.tx_readspeaker.settings.renderTo}
 		scriptUrl = {$plugin.tx_readspeaker.settings.scriptUrl}
 		applicationUrl = {$plugin.tx_readspeaker.settings.applicationUrl}
+		docReaderUrl = {$plugin.tx_readspeaker.settings.docReaderUrl}
 		buttonStyle = {$plugin.tx_readspeaker.settings.buttonStyle}
 	}
 
-	renderObject = COA
-	renderObject {
+	renderObject =< plugin.tx_readspeaker.widget
+
+	widget.renderObject = COA
+	widget.renderObject {
 		10 = LOAD_REGISTER
 		10 {
 			readerElementId {

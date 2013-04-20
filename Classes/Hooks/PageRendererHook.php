@@ -42,6 +42,7 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 
 		$this->addWidget($renderer);
 		$this->addResources($renderer);
+		$this->handleDocumentLinks($renderer);
 	}
 
 	/**
@@ -95,6 +96,92 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 
 			$renderer->setBodyContent($content);
 		}
+	}
+
+	/**
+	 * @param t3lib_PageRenderer $renderer
+	 * @return void
+	 */
+	protected function handleDocumentLinks(t3lib_PageRenderer $renderer) {
+		$enableDocReader = $this->getTypoScriptService()->resolve('settings.enableDocReader');
+
+		if (!$enableDocReader) {
+			return;
+		}
+
+		$content = $renderer->getBodyContent();
+		$matches = array();
+
+		$docReaderUrl = $this->getTypoScriptService()->resolve('settings.docReaderUrl');
+		$docReaderFileExtensions = $this->getTypoScriptService()->resolve('settings.docReaderFileExtensions');
+
+		if (strpos($docReaderUrl, '?') === FALSE) {
+			$docReaderUrl .= '?';
+		}
+
+		$fileExtensions = t3lib_div::trimExplode(',', preg_quote($docReaderFileExtensions, '#'), TRUE);
+		$pattern = '#<a\s+[^>]*?href="([^"]+\.(?:' . implode('|', $fileExtensions) . '))"[^>]*>#mis';
+
+		if (preg_match_all($pattern, $content, $matches)) {
+			$search = array();
+			$replace = array();
+
+			foreach ($matches[0] as $index => $link) {
+				$document = $matches[1][$index];
+
+				$arguments = array(
+					'lang' => $this->getTypoScriptService()->resolve('settings.language'),
+					'voice' => $this->getTypoScriptService()->resolve('settings.voice'),
+					'url' => $this->getAbsoluteUrl($document),
+				);
+
+				$attributes = array(
+					'class' => 'tx-readspeaker-docreader',
+					'href' => $docReaderUrl . t3lib_div::implodeArrayForUrl('', $arguments),
+					'onclick' => 'window.open(this.href, \'tx-readspeaker-docreader\'); return false;',
+					'title' => $this->getFrontend()->sL('LLL:EXT:readspeaker/locallang.xml:description.readContent'),
+				);
+
+				$search[] = $link;
+				$replace[] = $this->createTag('a', $attributes) . $link;
+			}
+
+			$content = str_replace($search, $replace, $content);
+			$renderer->setBodyContent($content);
+		}
+	}
+
+	/**
+	 * @param string $nodeName
+	 * @param array $attributes
+	 * @param string $nodeValue
+	 * @return string
+	 */
+	protected function createTag($nodeName, array $attributes = array(), $nodeValue = '') {
+		$nodeAttributes = '';
+		foreach ($attributes as $attributeName => $attributeValue) {
+			$nodeAttributes .= ' ' . $attributeName . '="' . htmlspecialchars($attributeValue) . '"';
+		}
+		return '<' . $nodeName . $nodeAttributes . '>' . $nodeValue . '</' . $nodeName . '>';
+	}
+
+	/**
+	 * @param string $uri
+	 * @return string
+	 */
+	protected function getAbsoluteUrl($uri) {
+		if (t3lib_div::isValidUrl($uri)) {
+			return $uri;
+		}
+
+		$siteUrl = t3lib_div::getIndpEnv('TYPO3_SITE_URL');
+		$baseUrl = $this->getTypoScriptService()->resolve('settings.baseUrl');
+		if (!empty($baseUrl)) {
+			$siteUrl = $baseUrl;
+		}
+
+		$uri = $siteUrl . ltrim($uri, '/');
+		return $uri;
 	}
 
 	/**
@@ -159,5 +246,13 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 	protected function getTypoScriptService() {
 		return Tx_Readspeaker_Services_TypoScriptService::getInstance();
 	}
+
+	/**
+	 * @return tslib_fe
+	 */
+	protected function getFrontend() {
+		return $GLOBALS['TSFE'];
+	}
+
 }
 ?>

@@ -2,8 +2,13 @@ plugin.tx_readspeaker {
 	settings {
 		# cat=ReadSpeaker; type=boolean; label=Enable ReadSpeaker
 		enable = 1
+		# cat=ReadSpeaker; type=boolean; label=Enable ReadSpeaker DocReader
+		enableDocReader = 0
 		# cat=ReadSpeaker; type=file; label=CSS Stylesheet
 		stylesheet = EXT:readspeaker/Resources/Public/Stylesheets/readspeaker.css
+		# cat=ReadSpeaker; type=string; label=ReadSpeaker DocReader file extensions
+		docReaderFileExtensions = pdf,doc,rtf,odt
+
 		# cat=ReadSpeaker; type=int+; label=ReadSpeaker Customer Id
 		customerId =
 		# cat=ReadSpeaker; type=string; label=ReadSpeaker BaseUrl (optinal if current baseUrl differs from that)
@@ -20,6 +25,8 @@ plugin.tx_readspeaker {
 		scriptUrl = http://f1.eu.readspeaker.com/script/%customerId%/rs_embhl_v2_de_de.js
 		# cat=ReadSpeaker; type=string; label=Application URL
 		applicationUrl = http://app.eu.readspeaker.com/cgi-bin/rsent
+		# cat=ReadSpeaker; type=string; label=ReadSpeaker DocReader URL
+		docReaderUrl = http://docreader.readspeaker.com/docreader/?cid=bsmdc
 		# cat=ReadSpeaker; type=user[EXT:readspeaker/Classes/Constants/Renderer.php:Tx_Readspeaker_Constants_Renderer->renderButtonClassSelector]; label=Style of the ReadSpeaker button
 		buttonStyle = tx-readspeaker-icon-basic
 	}
