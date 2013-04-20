@@ -72,7 +72,7 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 
 		if (!empty($renderTo)) {
 			$matches = array();
-			$pattern = '#<[a-z0-9]+\s+[^>]*?id="' . $renderTo . '"[^>]*>#mis';
+			$pattern = '#<[a-z0-9]+\s+[^>]*?id="' . preg_quote($renderTo, '#') . '"[^>]*>#mis';
 
 			if (preg_match($pattern, $renderer->getBodyContent(), $matches)) {
 				$renderToObject = $matches[0];
