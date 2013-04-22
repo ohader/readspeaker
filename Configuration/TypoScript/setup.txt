@@ -132,6 +132,8 @@ plugin.tx_readspeaker {
 			wrap = <div class="tx-readspeaker-reader-wrap"><div id="|"></div></div>
 		}
 
+		90 = RESTORE_REGISTER
+
 		stdWrap {
 			dataWrap = <div id="tx-readspeaker-widget-{register:readSpeakerCount}" class="tx-readspeaker-widget rs_skip">|</div>
 		}
