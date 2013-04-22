@@ -6,12 +6,18 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index="label.readContent">read</label>
 			<label index="label.readContent">Read content</label>
+			<label index="label.readDocument">Read document</label>
 			<label index="description.readContent">Click here to have the website content read</label>
+			<label index="description.readDocument">Click here to have the document read</label>
 		</languageKey>
 		<languageKey index="de" type="array">
+			<label index="label.read">vorlesen</label>
 			<label index="label.readContent">Inhalt vorlesen</label>
+			<label index="label.readDocument">Dokument vorlesen</label>
 			<label index="description.readContent">Klicken Sie hier um den Seiteninhalt vorgelesen zu bekommen</label>
+			<label index="description.readDocument">Klicken Sie hier um das Dokument vorgelesen zu bekommen</label>
 		</languageKey>
 	</data>
 </T3locallang>

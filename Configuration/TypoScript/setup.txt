@@ -138,4 +138,81 @@ plugin.tx_readspeaker {
 			dataWrap = <div id="tx-readspeaker-widget-{register:readSpeakerCount}" class="tx-readspeaker-widget rs_skip">|</div>
 		}
 	}
+
+	document.renderObject = COA
+	document.renderObject {
+		20 = COA
+		20 {
+			50 = TEXT
+			50 {
+				data = LLL:EXT:readspeaker/locallang.xml:label.read
+			}
+
+			stdWrap {
+				typolink {
+					parameter < plugin.tx_readspeaker.settings.docReaderUrl
+
+					parameter.postCObject = COA
+					parameter.postCObject {
+						stdWrap {
+							wrap = ?|
+						}
+
+						10 = TEXT
+						10 {
+							value = bsmdc
+							wrap = &cid=|
+						}
+						20 = TEXT
+						20 {
+							value < plugin.tx_readspeaker.settings.language
+							wrap = &lang=|
+						}
+						30 = TEXT
+						30 {
+							value < plugin.tx_readspeaker.settings.voice
+							required = 1
+							wrap = &voice=|
+						}
+						40 = TEXT
+						40 {
+							data = register:docReaderCurrentDocument
+							rawUrlEncode = 1
+							wrap = &url=|
+						}
+					}
+
+					ATagParams.cObject = COA
+					ATagParams.cObject {
+						10 = TEXT
+						10 {
+							# value < plugin.tx_readspeaker.settings.buttonStyle
+							value = tx-readspeaker-icon-default-12
+							htmlSpecialChars = 1
+							noTrimWrap = |class="tx-readspeaker-docreader |"|
+						}
+						20 = TEXT
+						20 {
+							value = tx-readspeaker-docreader
+							wrap = onclick="window.open(this.href, '|'); return false;"
+							noTrimWrap = | ||
+						}
+						30 = TEXT
+						30 {
+							data = LLL:EXT:readspeaker/locallang.xml:description.readDocument
+							htmlSpecialChars = 1
+							wrap = title="|"
+							noTrimWrap = | ||
+						}
+					}
+				}
+			}
+		}
+
+		30 = TEXT
+		30 {
+			data = register:docReaderCurrentContent
+			noTrimWrap = | ||
+		}
+	}
 }

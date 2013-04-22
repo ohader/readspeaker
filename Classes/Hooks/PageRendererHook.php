@@ -110,15 +110,9 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 		}
 
 		$content = $renderer->getBodyContent();
-		$matches = array();
-
-		$docReaderUrl = $this->getTypoScriptService()->resolve('settings.docReaderUrl');
 		$docReaderFileExtensions = $this->getTypoScriptService()->resolve('settings.docReaderFileExtensions');
 
-		if (strpos($docReaderUrl, '?') === FALSE) {
-			$docReaderUrl .= '?';
-		}
-
+		$matches = array();
 		$fileExtensions = t3lib_div::trimExplode(',', preg_quote($docReaderFileExtensions, '#'), TRUE);
 		$pattern = '#<a\s+[^>]*?href="([^"]+\.(?:' . implode('|', $fileExtensions) . '))"[^>]*>#mis';
 
@@ -129,40 +123,21 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 			foreach ($matches[0] as $index => $link) {
 				$document = $matches[1][$index];
 
-				$arguments = array(
-					'lang' => $this->getTypoScriptService()->resolve('settings.language'),
-					'voice' => $this->getTypoScriptService()->resolve('settings.voice'),
-					'url' => $this->getAbsoluteUrl($document),
+				$documentContent = $this->getRenderService()->renderDocumentLink(
+					$link,
+					$this->getAbsoluteUrl($document),
+					$this->getTypoScriptService()->getDocumentConfiguration()
 				);
 
-				$attributes = array(
-					'class' => 'tx-readspeaker-docreader',
-					'href' => $docReaderUrl . t3lib_div::implodeArrayForUrl('', $arguments),
-					'onclick' => 'window.open(this.href, \'tx-readspeaker-docreader\'); return false;',
-					'title' => $this->getFrontend()->sL('LLL:EXT:readspeaker/locallang.xml:description.readContent'),
-				);
-
-				$search[] = $link;
-				$replace[] = $this->createTag('a', $attributes) . $link;
+				if (!empty($documentContent)) {
+					$search[] = $link;
+					$replace[] = $documentContent;
+				}
 			}
 
 			$content = str_replace($search, $replace, $content);
 			$renderer->setBodyContent($content);
 		}
-	}
-
-	/**
-	 * @param string $nodeName
-	 * @param array $attributes
-	 * @param string $nodeValue
-	 * @return string
-	 */
-	protected function createTag($nodeName, array $attributes = array(), $nodeValue = '') {
-		$nodeAttributes = '';
-		foreach ($attributes as $attributeName => $attributeValue) {
-			$nodeAttributes .= ' ' . $attributeName . '="' . htmlspecialchars($attributeValue) . '"';
-		}
-		return '<' . $nodeName . $nodeAttributes . '>' . $nodeValue . '</' . $nodeName . '>';
 	}
 
 	/**
@@ -191,7 +166,7 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 	 */
 	protected function getReadSpeakerWidget() {
 		$readSpeakerWidget = $this->getRenderService()->renderWidget(
-			$this->getTypoScriptService()->getObjectConfiguration()
+			$this->getTypoScriptService()->getWidgetConfiguration()
 		);
 
 		return $readSpeakerWidget;

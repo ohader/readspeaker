@@ -26,7 +26,7 @@ plugin.tx_readspeaker {
 		# cat=ReadSpeaker; type=string; label=Application URL
 		applicationUrl = http://app.eu.readspeaker.com/cgi-bin/rsent
 		# cat=ReadSpeaker; type=string; label=ReadSpeaker DocReader URL
-		docReaderUrl = http://docreader.readspeaker.com/docreader/?cid=bsmdc
+		docReaderUrl = http://docreader.readspeaker.com/docreader/
 		# cat=ReadSpeaker; type=user[EXT:readspeaker/Classes/Constants/Renderer.php:Tx_Readspeaker_Constants_Renderer->renderButtonClassSelector]; label=Style of the ReadSpeaker button
 		buttonStyle = tx-readspeaker-icon-basic
 	}

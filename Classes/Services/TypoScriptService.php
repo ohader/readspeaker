@@ -75,6 +75,7 @@ class Tx_Readspeaker_Services_TypoScriptService extends Tx_Readspeaker_Services_
 		}
 
 		return $this->walk($path, $this->configuration);
+
 	}
 
 	/**
@@ -121,20 +122,31 @@ class Tx_Readspeaker_Services_TypoScriptService extends Tx_Readspeaker_Services_
 
 	/**
 	 * @return array
-	 * @deprecated Use getObjectConfiguration() instead
+	 * @deprecated Use getWidgetConfiguration() instead
 	 */
 	public function getRenderObjectConfiguration() {
-		return $this->getObjectConfiguration();
+		return $this->getWidgetConfiguration();
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getObjectConfiguration() {
+	public function getWidgetConfiguration() {
 		return array(
 			'settings.' => $this->getTypoScriptService()->resolve('settings.'),
-			'renderObject' => $this->getTypoScriptService()->resolve('renderObject'),
-			'renderObject.' => $this->getTypoScriptService()->resolve('renderObject.'),
+			'renderObject' => $this->getTypoScriptService()->resolve('widget.renderObject'),
+			'renderObject.' => $this->getTypoScriptService()->resolve('widget.renderObject.'),
+		);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getDocumentConfiguration() {
+		return array(
+			'settings.' => $this->getTypoScriptService()->resolve('settings.'),
+			'renderObject' => $this->getTypoScriptService()->resolve('document.renderObject'),
+			'renderObject.' => $this->getTypoScriptService()->resolve('document.renderObject.'),
 		);
 	}
 }

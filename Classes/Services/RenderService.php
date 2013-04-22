@@ -54,7 +54,7 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 		$this->renderCount++;
 
 		if (empty($configuration)) {
-			$configuration = $this->getTypoScriptService()->getObjectConfiguration();
+			$configuration = $this->getTypoScriptService()->getWidgetConfiguration();
 		}
 
 		$content = $this->render($configuration);
@@ -70,7 +70,7 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 		$this->renderCount++;
 
 		if (empty($configuration)) {
-			$configuration = $this->getTypoScriptService()->getObjectConfiguration();
+			$configuration = $this->getTypoScriptService()->getWidgetConfiguration();
 		}
 
 		$content = $this->render($configuration);
@@ -88,6 +88,33 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 		);
 
 		$this->getFrontend()->register['readSpeakerCount'] = $this->renderCount;
+
+		$content = $this->cObj->cObjGetSingle(
+			$configuration['renderObject'],
+			$configuration['renderObject.']
+		);
+
+		$this->getFrontend()->register = array_pop(
+			$this->getFrontend()->registerStack
+		);
+
+		return $content;
+	}
+
+	/**
+	 * @param string $content
+	 * @param string $document
+	 * @param array $configuration
+	 * @return string
+	 */
+	public function renderDocumentLink($content, $document, array $configuration) {
+		array_push(
+			$this->getFrontend()->registerStack,
+			$this->getFrontend()->register
+		);
+
+		$this->getFrontend()->register['docReaderCurrentContent'] = $content;
+		$this->getFrontend()->register['docReaderCurrentDocument'] = $document;
 
 		$content = $this->cObj->cObjGetSingle(
 			$configuration['renderObject'],
