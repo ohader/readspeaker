@@ -4,6 +4,8 @@
 	* [TASK] Add settings to scope of forwarded TypoScript configuration
 	* [FEATURE] Integrate basic implementation of DocReader functionality
 	* [BUGFIX] baseUrl setting does not have trailing slash
+	* [TASK] Restore TypoScript register after processing
+	* [TASK] Extract DocReader rendering from PHP to TypoScript
 
 2013-02-10  Oliver Hader  <oliver.hader@typo3.org>
 
