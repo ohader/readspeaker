@@ -1,3 +1,10 @@
+2013-04-22  Oliver Hader  <oliver.hader@typo3.org>
+
+	* [TASK] Regular expression pattern in not passed through preg_quote()
+	* [TASK] Add settings to scope of forwarded TypoScript configuration
+	* [FEATURE] Integrate basic implementation of DocReader functionality
+	* [BUGFIX] baseUrl setting does not have trailing slash
+
 2013-02-10  Oliver Hader  <oliver.hader@typo3.org>
 
 	* [FEATURE] Add possibility to enable/disable ReadSpeaker via TypoScript
