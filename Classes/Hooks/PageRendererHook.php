@@ -180,7 +180,7 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 			$siteUrl = $baseUrl;
 		}
 
-		$uri = $siteUrl . ltrim($uri, '/');
+		$uri = rtrim($siteUrl, '/') . '/' . ltrim($uri, '/');
 		return $uri;
 	}
 
