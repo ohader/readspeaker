@@ -1,33 +1,38 @@
 plugin.tx_readspeaker {
 	settings {
-		# cat=ReadSpeaker; type=boolean; label=Enable ReadSpeaker
+		# cat=ReadSpeaker/enable/1; type=boolean; label=Enable ReadSpeaker
 		enable = 1
-		# cat=ReadSpeaker; type=boolean; label=Enable ReadSpeaker DocReader
+		# cat=ReadSpeaker/enable/2; type=boolean; label=Enable ReadSpeaker DocReader
 		enableDocReader = 0
-		# cat=ReadSpeaker; type=file; label=CSS Stylesheet
+
+		# customsubcategory=ReadSpeakerView=View modifications;
+		# cat=ReadSpeaker/ReadSpeakerView/1; type=file; label=CSS Stylesheet
 		stylesheet = EXT:readspeaker/Resources/Public/Stylesheets/readspeaker.css
-		# cat=ReadSpeaker; type=string; label=ReadSpeaker DocReader file extensions
+		# cat=ReadSpeaker/ReadSpeakerView/2; type=user[EXT:readspeaker/Classes/Constants/Renderer.php:Tx_Readspeaker_Constants_Renderer->renderButtonClassSelector]; label=Style of the ReadSpeaker button
+		buttonStyle = tx-readspeaker-icon-basic
+
+		# customsubcategory=ReadSpeakerSettings=ReadSpeaker settings;
+		# cat=ReadSpeaker/ReadSpeakerSettings/1; type=int+; label=ReadSpeaker Customer Id
+		customerId =
+		# cat=ReadSpeaker/ReadSpeakerSettings/2; type=string; label=CSS Id of block to be used to render widget (optional)
+		renderTo =
+		# cat=ReadSpeaker/ReadSpeakerSettings/3r; type=string; label=CSS Id of block to be read (optional, but recommeded)
+		readId =
+		# cat=ReadSpeaker/ReadSpeakerSettings/4; type=string; label=ReadSpeaker BaseUrl (optinal if current baseUrl differs from that)
+		baseUrl =
+		# cat=ReadSpeaker/ReadSpeakerSettings/5; type=options[en_en,de_de]; label=Language
+		language = en_en
+		# cat=ReadSpeaker/ReadSpeakerSettings/6; type=string; label=Voice to be used for reading (optional)
+		voice =
+		# cat=ReadSpeaker/ReadSpeakerSettings/7; type=string; label=ReadSpeaker DocReader file extensions
 		docReaderFileExtensions = pdf,doc,rtf,odt
 
-		# cat=ReadSpeaker; type=int+; label=ReadSpeaker Customer Id
-		customerId =
-		# cat=ReadSpeaker; type=string; label=ReadSpeaker BaseUrl (optinal if current baseUrl differs from that)
-		baseUrl =
-		# cat=ReadSpeaker; type=options[en_en,de_de]; label=Language
-		language = en_en
-		# cat=ReadSpeaker; type=string; label=Voice to be used for reading (optional)
-		voice =
-		# cat=ReadSpeaker; type=string; label=CSS Id of block to be read (optional, but recommeded)
-		readId =
-		# cat=ReadSpeaker; type=string; label=CSS Id of block to be used to render widget (optional)
-		renderTo =
-		# cat=ReadSpeaker; type=string; label=Script URL (%customerId% will be replaced)
+		# customsubcategory=ReadSpeakerResources=ReadSpeaker Resources;
+		# cat=ReadSpeaker/ReadSpeakerResources/1; type=string; label=Script URL (%customerId% will be replaced)
 		scriptUrl = http://f1.eu.readspeaker.com/script/%customerId%/rs_embhl_v2_de_de.js
-		# cat=ReadSpeaker; type=string; label=Application URL
+		# cat=ReadSpeaker/ReadSpeakerResources/2; type=string; label=Application URL
 		applicationUrl = http://app.eu.readspeaker.com/cgi-bin/rsent
-		# cat=ReadSpeaker; type=string; label=ReadSpeaker DocReader URL
+		# cat=ReadSpeaker/ReadSpeakerResources/3; type=string; label=ReadSpeaker DocReader URL
 		docReaderUrl = http://docreader.readspeaker.com/docreader/
-		# cat=ReadSpeaker; type=user[EXT:readspeaker/Classes/Constants/Renderer.php:Tx_Readspeaker_Constants_Renderer->renderButtonClassSelector]; label=Style of the ReadSpeaker button
-		buttonStyle = tx-readspeaker-icon-basic
 	}
 }
