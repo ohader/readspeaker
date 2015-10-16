@@ -26,8 +26,7 @@
  * @author Oliver Hader <oliver.hader@typo3.org>
  * @package readspeaker
  */
-class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
-	const MARKER_ReadSpeaker = '###READSPEAKER_WIDGET###';
+class Tx_Readspeaker_Hooks_PageRendererHook extends Tx_Readspeaker_Hooks_AbstractHook implements t3lib_Singleton {
 
 	/**
 	 * Pre-processes resources and adds ReadSpeaker JavaScript
@@ -40,136 +39,7 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 			return;
 		}
 
-		$this->addWidget($renderer);
 		$this->addResources($renderer);
-		$this->handleDocumentLinks($renderer);
-	}
-
-	/**
-	 * Determines whether ReadSpeaker is enabled.
-	 *
-	 * @return boolean
-	 */
-	protected function isEnabled() {
-		return (
-			$this->getPageService()->isEnabled() &&
-			(bool) $this->getTypoScriptService()->resolve('settings.enable')
-		);
-	}
-
-	/**
-	 * Adds the ReadSpeaker widget, either to a defined CSS Id or
-	 * by substituting the pre-defined marker ###READSPEAKER_WIDGET###
-	 * in the markup template.
-	 *
-	 * @param t3lib_PageRenderer $renderer
-	 */
-	protected function addWidget(t3lib_PageRenderer $renderer) {
-		if ($this->getRenderService()->isRendered()) {
-			return;
-		}
-
-		$renderTo = $this->getTypoScriptService()->resolve('settings.renderTo');
-
-		if (!empty($renderTo)) {
-			$matches = array();
-			$pattern = '#<[a-z0-9]+\s+[^>]*?id="' . preg_quote($renderTo, '#') . '"[^>]*>#mis';
-
-			if (preg_match($pattern, $renderer->getBodyContent(), $matches)) {
-				$renderToObject = $matches[0];
-
-				$content = str_replace(
-					$renderToObject,
-					$renderToObject . $this->getReadSpeakerWidget(),
-					$renderer->getBodyContent()
-				);
-
-				$renderer->setBodyContent($content);
-			}
-
-		} elseif (strpos($renderer->getBodyContent(), self::MARKER_ReadSpeaker) !== FALSE) {
-			$content = str_replace(
-				self::MARKER_ReadSpeaker,
-				$this->getReadSpeakerWidget(),
-				$renderer->getBodyContent()
-			);
-
-			$renderer->setBodyContent($content);
-		}
-	}
-
-	/**
-	 * @param t3lib_PageRenderer $renderer
-	 * @return void
-	 */
-	protected function handleDocumentLinks(t3lib_PageRenderer $renderer) {
-		$enableDocReader = $this->getTypoScriptService()->resolve('settings.enableDocReader');
-
-		if (!$enableDocReader) {
-			return;
-		}
-
-		$content = $renderer->getBodyContent();
-		$docReaderFileExtensions = $this->getTypoScriptService()->resolve('settings.docReaderFileExtensions');
-
-		$matches = array();
-		$fileExtensions = t3lib_div::trimExplode(',', preg_quote($docReaderFileExtensions, '#'), TRUE);
-		$pattern = '#<a\s+[^>]*?href="([^"]+\.(?:' . implode('|', $fileExtensions) . '))"[^>]*>#mis';
-
-		if (preg_match_all($pattern, $content, $matches)) {
-			$search = array();
-			$replace = array();
-
-			foreach ($matches[0] as $index => $link) {
-				$document = $matches[1][$index];
-
-				$documentContent = $this->getRenderService()->renderDocumentLink(
-					$link,
-					$this->getAbsoluteUrl($document),
-					$this->getTypoScriptService()->getDocumentConfiguration()
-				);
-
-				if (!empty($documentContent)) {
-					$search[] = $link;
-					$replace[] = $documentContent;
-				}
-			}
-
-			$content = str_replace($search, $replace, $content);
-			$renderer->setBodyContent($content);
-		}
-	}
-
-	/**
-	 * @param string $uri
-	 * @return string
-	 */
-	protected function getAbsoluteUrl($uri) {
-		if (t3lib_div::isValidUrl($uri)) {
-			return $uri;
-		}
-
-		$siteUrl = t3lib_div::getIndpEnv('TYPO3_SITE_URL');
-		$baseUrl = $this->getTypoScriptService()->resolve('settings.baseUrl');
-		if (!empty($baseUrl)) {
-			$siteUrl = $baseUrl;
-		}
-
-		$uri = rtrim($siteUrl, '/') . '/' . ltrim($uri, '/');
-		return $uri;
-	}
-
-	/**
-	 * Gets the ReadSpeaker widget.
-	 *
-	 * @return string
-	 */
-	protected function getReadSpeakerWidget() {
-		$readSpeakerWidget = $this->getRenderService()->renderWidget(
-			$this->getTypoScriptService()->getWidgetConfiguration()
-		);
-
-		return $readSpeakerWidget;
 	}
 
 	/**
@@ -192,42 +62,4 @@ class Tx_Readspeaker_Hooks_PageRendererHook implements t3lib_Singleton {
 		}
 	}
 
-	/**
-	 * @return string
-	 */
- 	protected function getScriptUrl() {
-		 $customerId = $this->getTypoScriptService()->resolve('settings.customerId');
-		 $scriptUrl = $this->getTypoScriptService()->resolve('settings.scriptUrl');
-		 return str_replace('%customerId%', $customerId, $scriptUrl);
-	}
-
-	/**
-	 * @return Tx_Readspeaker_Services_PageService
-	 */
-	protected function getPageService() {
-		return Tx_Readspeaker_Services_PageService::getInstance();
-	}
-
-	/**
-	 * @return Tx_Readspeaker_Services_RenderService
-	 */
-	protected function getRenderService() {
-		return Tx_Readspeaker_Services_RenderService::getInstance();
-	}
-
-	/**
-	 * @return Tx_Readspeaker_Services_TypoScriptService
-	 */
-	protected function getTypoScriptService() {
-		return Tx_Readspeaker_Services_TypoScriptService::getInstance();
-	}
-
-	/**
-	 * @return tslib_fe
-	 */
-	protected function getFrontend() {
-		return $GLOBALS['TSFE'];
-	}
-
 }
-?>
