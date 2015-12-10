@@ -66,7 +66,6 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 	 * @return string
 	 */
 	public function renderWidget(array $configuration = NULL) {
-		$this->cObj = $this->getFrontend()->cObj;
 		$this->renderCount++;
 
 		if (empty($configuration)) {
@@ -89,7 +88,7 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 
 		$this->getFrontend()->register['readSpeakerCount'] = $this->renderCount;
 
-		$content = $this->cObj->cObjGetSingle(
+		$content = $this->getContentObjectRenderer()->cObjGetSingle(
 			$configuration['renderObject'],
 			$configuration['renderObject.']
 		);
@@ -116,7 +115,7 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 		$this->getFrontend()->register['docReaderCurrentContent'] = $content;
 		$this->getFrontend()->register['docReaderCurrentDocument'] = $document;
 
-		$content = $this->cObj->cObjGetSingle(
+		$content = $this->getContentObjectRenderer()->cObjGetSingle(
 			$configuration['renderObject'],
 			$configuration['renderObject.']
 		);
@@ -133,6 +132,20 @@ class Tx_Readspeaker_Services_RenderService extends Tx_Readspeaker_Services_Abst
 	 */
 	public function isRendered() {
 		return ($this->renderCount > 0);
+	}
+
+	/**
+	 * @return tslib_cObj
+	 */
+	protected function getContentObjectRenderer() {
+		if (empty($this->cObj)) {
+			if (empty($this->getFrontend()->cObj)) {
+				$this->getFrontend()->newCObj();
+			}
+			$this->cObj = $this->getFrontend()->cObj;
+		}
+
+		return $this->cObj;
 	}
 
 }
